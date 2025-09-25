@@ -1,9 +1,11 @@
+import useTheme from "@/hooks/useTheme";
 import { StyleSheet, Text, View } from "react-native";
 
 const Journal = () => {
+  const { colours } = useTheme();
   return (
-    <View style={styles.container}>
-      <Text style={styles.content}>Journal.</Text>
+    <View style={[styles.container, {backgroundColor: colours.background}]}>
+      <Text style={[styles.content, {color: colours.text}]}>Journal.</Text>
     </View>
   );
 }
@@ -13,11 +15,9 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#2d2d2d",
   },
 
   content: {
-    color: "#c3c3c3",
     fontSize: 24,
   }
 });

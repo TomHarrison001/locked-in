@@ -1,9 +1,16 @@
-import { StyleSheet, Text, View } from "react-native";
+import useTheme from "@/hooks/useTheme";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 const Settings = () => {
+  const { toggleDarkMode, colours } = useTheme();
   return (
-    <View style={styles.container}>
-      <Text style={styles.content}>Settings.</Text>
+    <View style={[styles.container, {backgroundColor: colours.background}]}>
+      <Text style={[styles.content, {color: colours.text}]}>Settings.</Text>
+      <TouchableOpacity onPress={toggleDarkMode}>
+        <Text style={[styles.content, {color: colours.text}]}>
+          Toggle Dark Mode.
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -13,11 +20,9 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#2d2d2d",
   },
 
   content: {
-    color: "#c3c3c3",
     fontSize: 24,
   }
 });
